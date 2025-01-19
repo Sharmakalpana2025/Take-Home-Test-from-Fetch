@@ -1,3 +1,39 @@
+-- Create the database
+CREATE DATABASE IF NOT EXISTS fetch_data;
+USE fetch_data;
+
+-- Create the Users table
+CREATE TABLE IF NOT EXISTS Users (
+    ID VARCHAR(255) PRIMARY KEY,
+    CREATED_DATE datetime,
+    BIRTH_DATE datetime,
+    STATE VARCHAR(255),
+    LANGUAGE VARCHAR(255),
+    GENDER VARCHAR(255)
+);
+
+-- Create the Products table
+CREATE TABLE IF NOT EXISTS Products (
+    CATEGORY_1 VARCHAR(255),
+    CATEGORY_2 VARCHAR(255),
+    CATEGORY_3 VARCHAR(255),
+    MANUFACTURER VARCHAR(255),
+    BRAND VARCHAR(255),
+    BARCODE BIGINT
+);
+
+-- Create the Transactions table
+CREATE TABLE IF NOT EXISTS Transactions (
+    RECEIPT_ID VARCHAR(255),
+    PURCHASE_DATE datetime,
+    SCAN_DATE datetime,
+    STORE_NAME VARCHAR(255),
+    USER_ID VARCHAR(255),
+    BARCODE BIGINT,
+    FINAL_QUANTITY DECIMAL(10, 2),
+    FINAL_SALE DECIMAL(10, 2)
+);
+
 -- Top 5 Brands by Receipts Scanned Among Users 21 and Over
 WITH Eligible_Users AS (
     SELECT ID
